@@ -1,0 +1,25 @@
+version: "3"
+services:
+  web:
+    build: ./app
+    ports: ["8090:8090"]
+    volumes: [./app:/app]
+    environment:
+      FLASK_ENV: development
+      LOGIN_JWT_SECRET: secret
+    depends_on:
+      - mysql-db
+      
+  mysql-db:
+    image: mysql:5.7
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: H*Xhz{2T"4>jT8vJ
+    ports:
+      - 3306:3306
+    volumes:
+      - ./database/volume:/var/lib/mysql
+      - ./database/scripts/init.sql:/docker-entrypoint-initdb.d/1.sql
+
+       

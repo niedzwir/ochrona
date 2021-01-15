@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+		<title>SoonTM</title>
+        <meta charset="utf-8">
+		<link href="../styles/style.css" rel="stylesheet" type="text/css">
+        <script src="../scripts/script.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href='https://fonts.googleapis.com/css?family=Cambay&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Anonymous+Pro&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+	</head>
+<body>
+	<nav style="font-size:2vw;max-width:100%;height:auto;">
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/registration">Registration </a></li>
+            <li><a href="/login">Login </a></li>
+		</ul>
+	</nav>
+	<section>
+            <h3>Zarejestruj się</h3>
+            <form id="registration-form" class="registration-form">
+                <label for="login" class="required">Login</label>
+                <input id="login" type="text" name="login"/>
+                <br />
+
+                <label for="password" class="required">Hasło</label>
+                <input id="password" type="password" name="password"/>
+                <br/>
+				
+				<label for="repeat-password" class="required">PowtórzHasło</label>
+                <input id="repeat-password" type="password" name="repeat-password"/>
+                <br/>
+				
+				<label for="mail" class="required">mail</label>
+                <input id="mail" type="text" name="mail"/>
+                <br />
+
+                <input id="button-reg-form" type="submit" value="Rejestruj"/> 
+            </form>
+
+            {{e}}
+    </section>
+	<footer>
+		<p class="footer-inline left">&copy; 2020 soonTM</p>
+    </footer>
+</body>
+</html>

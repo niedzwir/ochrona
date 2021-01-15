@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+		<title>SoonTM</title>
+        <meta charset="utf-8">
+		<link href="../styles/style.css" rel="stylesheet" type="text/css">
+		<!--<script src="../scripts/scriptlogin.js"></script>-->
+		<link href='https://fonts.googleapis.com/css?family=Cambay&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Anonymous+Pro&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+	</head>
+<body>
+	
+	
+	<nav>
+		<ul>
+			<li><a href="/">Wyloguj</a></li>
+		</ul>
+	</nav>
+	<section>
+            zalogowałeś się! brawo {{user}}!
+	</section>
+	<section>
+		<h3>Dodaj zwykłą notatkę</h3>
+		<form action="https://localhost:8090/note" method="POST">
+			<label for="note_text" class="required">treść</label>
+			<input id="note_text" type="text" name="note_text"/>
+			<br />
+			<label for="note_name" class="required">nazwa (musi być unikalna i zawierać tylko litery!)</label>
+			<input id="note_name" type="text" name="note_name"/>
+			<br />		
+			
+			<br/>
+
+			<input id="button-reg-form" type="submit" value="Wyślij"/> 
+		</form>
+		<h3>Dodaj szyfrowaną notatkę</h3>
+		<form action="https://localhost:8090/encrypted_note" method="POST">
+			<label for="note_text" class="required">treść</label>
+			<input id="note_text" type="text" name="note_text"/>
+			<br />
+			<label for="note_name" class="required">nazwa (musi być unikalna i zawierać tylko litery!)</label>
+			<input id="note_name" type="text" name="note_name"/>
+			<br />			
+			<label for="password" class="required">Hasło</label>
+            <input id="password" type="password" name="password"/>
+			<br/>
+			
+			<br/>
+
+			<input id="button-reg-form" type="submit" value="Wyślij"/> 
+		</form>
+		<h3>Wyświetl notatkę</h3>
+		<form action="https://localhost:8090/readnote" method="POST">
+			<label for="note_name" class="required">nazwa notatki</label>
+			<input id="note_name" type="text" name="note_name"/>
+			<br />		
+			
+			<br/>
+
+			<input id="button-reg-form" type="submit" value="Wyświetl"/> 
+		</form>
+
+		<h3>Wyświetl zaszyfrowaną notatkę</h3>
+		<form action="https://localhost:8090/readencryptednote" method="POST">
+			<label for="note_name" class="required">nazwa notatki</label>
+			<input id="note_name" type="text" name="note_name"/>
+			<br />
+			<label for="password" class="required">Hasło</label>
+            <input id="password" type="password" name="password"/>
+			<br/>		
+			
+			<br/>
+
+			<input id="button-reg-form" type="submit" value="Wyświetl"/> 
+		</form>
+</section>
+	<footer>
+		<p class="footer-inline left">&copy; 2020 soonTM</p>
+    </footer>
+</body>
+</html>

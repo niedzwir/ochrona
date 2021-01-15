@@ -1,0 +1,9 @@
+Flask
+gunicorn
+pyopenssl
+flask-jwt-extended
+pyjwt == 1.7.1
+requests
+pymysql
+PyCryptoDome
+bcrypt
