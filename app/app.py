@@ -10,6 +10,8 @@ from cryptography.fernet import Fernet
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 import time
+import smtplib
+import ssl
 import math
 from datetime import date
 from flask import Flask, render_template, abort
@@ -271,6 +273,46 @@ def entropy(password):
             pi = stat[i]/len(password)
             H -= pi*math.log2(pi)
     return H
+
+#https://stackoverflow.com/questions/60956725/send-email-with-gmail-python
+@app.route("/mail", methods=["GET","POST"])
+def send_mail():
+    if(check_fails() > 5):
+        abort(403,"masz bana, wróć jutro")
+    form = request.form.to_dict()
+    login = form["login"]
+    if(login.isalpha() == False):
+        fail()
+        abort(404,"invalid login")
+    cursor.execute(''' select * from users where login = %(login)s''',{"login":login})
+    record = cursor.fetchall()
+    if(cursor.rowcount == 0):
+        fail()
+        abort(404,"nie ma takiego użytkownika")
+    receiver_email = record[0].get("mail")
+    # User configuration
+    sender_email = 'ochronadanych844@gmail.com'
+    password = 'zaq1@WSXcde3$RFV'
+    # Email text
+    email_body = '''
+        tutaj bylby reset hasla, ale nie starczylo czasu :(
+    '''
+
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    context = ssl.create_default_context()
+    server.starttls(context=context)
+    server.login(sender_email, password)
+    try:
+        server.sendmail(sender_email, receiver_email, email_body)
+        print('Email sent!')
+    except:
+        print("nie")
+
+    print('Closing the server...')
+    server.quit()
+
+    return render_template("login.html")
+
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template("404.html", error=error)
